@@ -28,18 +28,26 @@ public class Main {
                         "считались одинаковыми тогда, когда у них одинаковые значения числителя и знаменателя.");
                 System.out.println("Решение:");
 
-                Fraction f1 = new Fraction(3, 4);
-                Fraction f2 = new Fraction(-6, -8); // Эквивалентно 6/8 → 3/4 после нормализации
+                // 1. Объявляем переменные через интерфейс FractionOperations
+                FractionOperations f1 = new Fraction(3, 4);
+                FractionOperations f2 = new Fraction(-6, -8); // Нормализуется до 3/4
+                FractionOperations f3 = new Fraction(1, 2);
 
-                Fraction f3 = new Fraction(1, 2);
+                // 2. Вызываем методы через интерфейс (компилятор «видит» только интерфейс)
+                System.out.println(f1.toString());           // "3/4"
+                System.out.println(f1.getValue());             // 0.75
 
-                System.out.println(f1);           // "3/4"
-                System.out.println(f1.getValue()); // 0.75
+                System.out.println(f2.toString());           // "3/4" (знак перенесён)
+                System.out.println(f2.getValue());           // 0.75
 
-                System.out.println(f2);           // "3/4" (знак перенесён)
-                System.out.println(f2.getValue()); // 0.75
-                System.out.println("Одинаковые дроби?\n true (одинаковые числитель и знаменатель)\n false (разные)\n Результат: "); // true (одинаковые числитель и знаменатель)
-                System.out.println(f1.equals(f2)); // true (одинаковые числитель и знаменатель)
+                System.out.println("Одинаковые дроби?");
+                System.out.println("true (одинаковые числитель и знаменатель)");
+                System.out.println("false (разные)");
+                System.out.println("Результат:");
+
+                // 3. equals() тоже вызывается через интерфейс
+                System.out.println(f1.equals(f2)); // true
+
                 break;
 
             case 2:
